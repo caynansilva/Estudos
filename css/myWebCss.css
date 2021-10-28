@@ -1,0 +1,16 @@
+.imagemDeFundo{
+    background-image: url('./img/img_btn_01.png'); 
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    display: block;
+}
+
+.textoVermelho{
+    text-shadow: 3px 2px red;
+    background-image: url('./img/img_btn_01.png'); 
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    display: block;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Estudos JavaScript</title>
+        <link href='css/bootstrap.css' rel='stylesheet'>
+        <link href='css/myWebCss.css' rel='stylesheet'>
+        <link rel="shortcut icon" type="image/png" href="img/book.ico"/>
+    </head>
+    <body class='bg-dark'>
+        <div name='header'>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-warning navbar-fixed-top">
+                <a class="navbar-brand" href="#">
+                    <img src="img/book.ico" width="30" height="30" class="d-inline-block align-top" alt=""/>
+                    <i class="text-danger" font-family="Copperplate">Java</i> <i class="text-light">Script</i>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <!--li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li-->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mais Opções
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Sobre Nós</a>
+                        <a class="dropdown-item" href="#">System32</a>
+                        <a class="dropdown-item" href="#">Deletada</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Contato</a>
+                      </div>
+                    </li>
+                    <!--li class="nav-item active">
+                        <a class="nav-link" href="#"> Sobre <span class="sr-only">(current)</span></a>
+                    </li-->
+                    <!--li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li-->
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+           </div>
+        </div>
+        <div name='spacer' class='row'>
+          <p></p>
+      </div>
+      <!--Body da página-->>
+        <div name='pagebody' class='container bg-light' height='100%''>
+            <div name='spacer' class='row'>
+                <p></p>
+            </div>
+            <div name='conteudo'>
+                <div name='linha_01' class='row'>
+                    <div class='col-md-12'>
+                       <h3> Informações da Máquina:</h3>
+                       <p></p>
+                    </div>
+                </div>
+                <div name='spacer' class='row'>
+                  <p></p>
+                </div>
+                <div name='linha_02' class='row'>
+                    <div class='col-md-4'>
+                        <p>Hostname:
+                          <input class="form-control mr-sm-2" id="txtHost">
+                        </p>
+                    </div>
+                </div>
+                <div name='linha_03' class='row'>
+                  <div class='col-md-4'>
+                      <p>IP Adress:
+                        <input class="form-control mr-sm-2" id="txtIP">
+                      </p>
+                  </div>
+              </div>
+              <div name='linha_03' class='row'>
+                  <div class='col-md-4'>
+                      <p>Modelo da Máquina:
+                        <input class="form-control mr-sm-2" id="txtModelo">
+                      </p>
+                  </div>
+              </div>
+              <div name='linha_04' class='row'>
+                <div class='col-md-4'>
+                    <p>Número do Cartão de Crédito
+                      <input class="form-control mr-sm-2" id="txtCartão">
+                    </p>
+                </div>
+            </div>
+            <div name='linha_05' class='row'>
+              <div class='col-md-4'>
+                  <p>Data de Validade
+                    <input class="form-control mr-sm-2" id="txtData">
+                  </p>
+              </div>
+            </div>
+            <div name='linha_06' class='row'>
+              <div class='col-md-4'>
+                  <p>CVV
+                    <input class="form-control mr-sm-2" id="txtcvv">
+                  </p>
+              </div>
+          </div>
+            <div name='linha_fim' class='row'>
+                    <div class='col-md-4'>
+                        <button class="btn btn-outline-secondary" type="button" onclick="ExibeAlerta()">Confirmar</button>
+                    </div>
+                    <div class='col-md-4'>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div name='spacer' class='row'>
+                <!--p class='textoVermelho'> Teste</p-->
+                <p></p>
+            </div>
+            <div name='spacer' class='row'>
+              <p></p>
+            </div>
+            <div name='spacer' class='row'>
+              <p></p>
+            </div>
+        </div>
+        
+        <!--Rodapé da Página-->
+
+        <div class='navbar fixed-bottom bg-secondary'>
+          <div name='footerpage' class='container'>
+              <div name='menus' class='row'>
+                  <div class='col-md-3'>
+                      <!--button type='button' class='btn btn-lg btn-primary' >Menu 01</button-->
+                  </div>
+                  <div class='col-md-3'>
+                      <!--button type='button' class='btn btn-lg btn-default'>Menu 02</button-->
+                  </div>
+                  <div class='col-md-3'>
+                      <!--button type='button' class='btn btn-lg btn-default'>Menu 03</button-->
+                  </div>
+                  <div class='col-md-3'>
+                      <!--button type='button' class='btn btn-lg btn-default'>Menu 04</button-->
+                  </div>
+              </div>
+              <div name='footer2' class='row' style="color:white" style="font-size:10px"> 
+                  <div class='col-md-12'>
+                      Copyright © 2021 Bitch Inc. Todos os direitos reservados. Bitch Computer Brasil Ltda. CNPJ: 00.000.000/0000-00
+                  </div>
+              </div>
+              <div name='footer3' class='row' style="color:white" style="font-size:10px"> 
+                  <div class='col-md-3'>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='js/bootstrap.js'></script>
+        <script src='js/scripts.js'></script>
+    </body>
+</html>
