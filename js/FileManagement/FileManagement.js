@@ -165,4 +165,80 @@ function WiriteLnFile(arquivo, mensagem){
     }
 }
 
-module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile, renameFile};
+/* 
+-------------------------------------------------------------------------------
+    Description: Move Files Between Folders
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var arquivo = 'file.txt';
+            var oldPath = 'C:/Folder/Path/';
+            var newPath = 'C:/Folder/Path/move/';
+    Call Function:
+            MoveFile(arquivo, oldPath, newPath);
+    Function Outputs: N/A
+    Creation Date: 03/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function MakeDir(dirPathName){
+    var fs = require('fs')
+    if (fs.existsSync(dirPathName)) {
+        console.log('Caminho Ou Arquivo já existem');
+    } else {
+        fs.mkdir(dirPathName, function (err) {
+            if (err) throw err
+            //console.log('Arquivo Renomeado!');
+        })
+    }
+}
+
+/* 
+-------------------------------------------------------------------------------
+    Description: Move Files Between Folders
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var arquivo = 'file.txt';
+            var oldPath = 'C:/Folder/Path/';
+            var newPath = 'C:/Folder/Path/move/';
+    Call Function:
+            MoveFile(arquivo, oldPath, newPath);
+    Function Outputs: N/A
+    Creation Date: 03/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function RemoveDir(dirPathName){
+    const fs = require('fs')
+    //var rimraf = require("rimraf");
+    if (fs.existsSync(dirPathName)) {
+        fs.rm(dirPathName, { recursive: true }, function (err) {
+            if (err) throw err
+            //console.log('Arquivo Renomeado!');
+        })
+    } else {
+        console.log('Caminho Ou Arquivo Não Existem');
+    }
+}
+
+/* 
+-------------------------------------------------------------------------------
+    Description: Move Files Between Folders
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var arquivo = 'file.txt';
+            var oldPath = 'C:/Folder/Path/';
+            var newPath = 'C:/Folder/Path/move/';
+    Call Function:
+            MoveFile(arquivo, oldPath, newPath);
+    Function Outputs: N/A
+    Creation Date: 03/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function DirExists(dirPathName){
+    const fs = require('fs')
+    //var rimraf = require("rimraf");
+    return (fs.existsSync(dirPathName))
+
+}
+module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile, renameFile, MakeDir, RemoveDir, DirExists};
