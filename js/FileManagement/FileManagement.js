@@ -56,10 +56,12 @@ function deleteFile(FilePath){
     let FileSource = FilePath.substr(FilePath.lastIndexOf('/') + 1);
     //Checa se o Arquivo Existe
       if(fs.existsSync(FilePath)) {
-        fs.unlinkSync(FilePath, (err) => {
-            if (err) throw err;
-            //console.log('Arquivo Deletado com sucesso!');
-          });
+        setTimeout(function(){  //Espera 2 Segundos entre cada execução
+            fs.unlinkSync(FilePath, (err) => {
+                if (err) throw err;
+                //console.log('Arquivo Deletado com sucesso!');
+              });
+        }, 2000);
       } else {
         console.log('Caminho ou Arquivo não existem');
       }
@@ -85,6 +87,35 @@ function moveFile(arquivo, oldPath, newPath){
         fs.rename(oldPath + arquivo, newPath + arquivo, function (err) {
             if (err) throw err
             //console.log('Arquivo Movido!');
+        })
+    } else {
+        console.log('Caminho Ou Arquivo Não Existem');
+    }
+}
+/* 
+
+
+/* 
+-------------------------------------------------------------------------------
+    Description: Move Files Between Folders
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var arquivo = 'file.txt';
+            var oldPath = 'C:/Folder/Path/';
+            var newPath = 'C:/Folder/Path/move/';
+    Call Function:
+            MoveFile(arquivo, oldPath, newPath);
+    Function Outputs: N/A
+    Creation Date: 03/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function renameFile(currentFileName, NewFileName){
+    var fs = require('fs')
+    if (fs.existsSync(currentFileName)) {
+        fs.rename(currentFileName, NewFileName, function (err) {
+            if (err) throw err
+            //console.log('Arquivo Renomeado!');
         })
     } else {
         console.log('Caminho Ou Arquivo Não Existem');
@@ -134,4 +165,4 @@ function WiriteLnFile(arquivo, mensagem){
     }
 }
 
-module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile};
+module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile, renameFile};
