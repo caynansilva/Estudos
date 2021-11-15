@@ -167,14 +167,12 @@ function WiriteLnFile(arquivo, mensagem){
 
 /* 
 -------------------------------------------------------------------------------
-    Description: Move Files Between Folders
+    Description: Cria uma Pasta
     Author: Caynan Ramos Silva
     Inputs: 
-            var arquivo = 'file.txt';
-            var oldPath = 'C:/Folder/Path/';
-            var newPath = 'C:/Folder/Path/move/';
+            var dirPathName = 'C:/Folder/Path/move/';
     Call Function:
-            MoveFile(arquivo, oldPath, newPath);
+            MakeDir('C:/Folder/Path/move/');
     Function Outputs: N/A
     Creation Date: 03/11/2021
     Version: 1.0.0 Beta
@@ -194,14 +192,12 @@ function MakeDir(dirPathName){
 
 /* 
 -------------------------------------------------------------------------------
-    Description: Move Files Between Folders
+    Description: Remove uma Pasta
     Author: Caynan Ramos Silva
     Inputs: 
-            var arquivo = 'file.txt';
-            var oldPath = 'C:/Folder/Path/';
-            var newPath = 'C:/Folder/Path/move/';
+            var dirPathName = 'C:/Folder/Path/delete/';
     Call Function:
-            MoveFile(arquivo, oldPath, newPath);
+            RemoveDir('C:/Folder/Path/delete/');
     Function Outputs: N/A
     Creation Date: 03/11/2021
     Version: 1.0.0 Beta
@@ -213,7 +209,6 @@ function RemoveDir(dirPathName){
     if (fs.existsSync(dirPathName)) {
         fs.rm(dirPathName, { recursive: true }, function (err) {
             if (err) throw err
-            //console.log('Arquivo Renomeado!');
         })
     } else {
         console.log('Caminho Ou Arquivo Não Existem');
@@ -222,15 +217,13 @@ function RemoveDir(dirPathName){
 
 /* 
 -------------------------------------------------------------------------------
-    Description: Move Files Between Folders
+    Description: Checa se o diretório informado existe
     Author: Caynan Ramos Silva
     Inputs: 
-            var arquivo = 'file.txt';
-            var oldPath = 'C:/Folder/Path/';
-            var newPath = 'C:/Folder/Path/move/';
+            var dirPathName = 'C:/Folder/Path/';
     Call Function:
-            MoveFile(arquivo, oldPath, newPath);
-    Function Outputs: N/A
+            DirExists('C:/Folder/Path/');
+    Function Outputs: true/false
     Creation Date: 03/11/2021
     Version: 1.0.0 Beta
 -------------------------------------------------------------------------------
@@ -241,4 +234,106 @@ function DirExists(dirPathName){
     return (fs.existsSync(dirPathName))
 
 }
-module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile, renameFile, MakeDir, RemoveDir, DirExists};
+/* 
+-------------------------------------------------------------------------------
+    Description: Retorna uma String com data e hora
+    Author: Caynan Ramos Silva
+    Inputs: 
+    Call Function:
+            timeDate();
+    Function Outputs: N/A
+    Creation Date: 03/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function timeDate(){
+    
+    let datetime = new Date();
+    // adjust 0 before single digit date
+    let date = ("0" + datetime.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (datetime.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = datetime.getFullYear();
+
+    // current hours
+    let hours = datetime.getHours();
+
+    // current minutes
+    let minutes = datetime.getMinutes();
+
+    // current seconds
+    let seconds = datetime.getSeconds();
+
+    // prints date in YYYY-MM-DD format
+    //console.log(year + "-" + month + "-" + date);
+
+    // prints date & time in YYYY-MM-DD HH:MM:SS format
+    let formatedDate = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+    return formatedDate;
+}
+
+/* 
+-------------------------------------------------------------------------------
+    Description: Retorna um Array que contém todos os arqivos de uma pasta
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var dirPathName = 'C:/Folder/Path/';
+    Call Function:
+            readDir('C:/Folder/Path/')
+    Function Outputs: 
+            [
+            'color-db.ser',
+            'dayParts.ser',
+            'names-db.xml.ser',
+            'product-db.xml.ser',
+            'store-db.xml.ser'
+            ]
+    Creation Date: 15/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function readDir(dirPathName){
+    const fs = require('fs');
+    if (DirExists(dirPathName)){
+        return fs.readdirSync(dirPathName);
+    }
+}
+/* 
+-------------------------------------------------------------------------------
+    Description: Retorna um Array que contém todos os arquivos com a extensão descrita
+    Author: Caynan Ramos Silva
+    Inputs: 
+            var extensao = '.txt';
+            var dirPathName = 'C:/Folder/Path/';
+    Call Function:
+            fileSystem.filesByExtention('C:/Folder/Path/', '.txt')
+    Function Outputs: 
+            [
+            'color-db.ser',
+            'dayParts.ser',
+            ]
+    Creation Date: 15/11/2021
+    Version: 1.0.0 Beta
+-------------------------------------------------------------------------------
+*/
+function filesByExtention(dirPathName, extensao){
+    
+    if (DirExists(dirPathName)){
+        let arquivosXML = [];
+        let cont = 0;
+        readDir(dirPathName).forEach(arquivo =>{
+            if(arquivo.includes(extensao)){
+                arquivosXML[cont] = arquivo;
+                cont++;
+            }
+        });
+        return arquivosXML;
+    } else {
+        console.log('caminho inexistente!');
+    }
+}
+
+module.exports = {WiriteLnFile, moveFile, copyFile, deleteFile, renameFile, MakeDir, RemoveDir, DirExists, timeDate, readDir, filesByExtention};
